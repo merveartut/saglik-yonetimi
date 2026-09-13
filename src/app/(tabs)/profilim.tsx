@@ -1,5 +1,15 @@
+import { ProfilScreen } from "@/features/profil/screens/ProfilScreen";
+import { useRouter } from "expo-router";
+
 const profilim = () => {
-  return <div>profilim</div>;
+  const router = useRouter();
+  return (
+    <ProfilScreen
+      onBack={() => {
+        router.replace("/" as any);
+      }}
+    />
+  );
 };
 
 export default profilim;

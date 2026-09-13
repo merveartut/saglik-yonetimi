@@ -1,5 +1,15 @@
+import { OdemelerimScreen } from "@/features/odemeler/screens/OdemelerimScreen";
+import { useRouter } from "expo-router";
+
 const odemelerim = () => {
-  return <div>odemelerim</div>;
+  const router = useRouter();
+  return (
+    <OdemelerimScreen
+      onBack={() => {
+        router.replace("/" as any);
+      }}
+    />
+  );
 };
 
 export default odemelerim;

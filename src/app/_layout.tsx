@@ -4,8 +4,9 @@ import "react-native-reanimated";
 
 export default function RootLayout() {
   return (
-    <Stack screenOptions={{ headerShown: false }}>
+    <Stack initialRouteName="login" screenOptions={{ headerShown: false }}>
       <Stack.Screen name="login" options={{ title: "E-Devlet Giriş" }} />
+      <Stack.Screen name="biten-raporlu-ilaclar" />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
   );
