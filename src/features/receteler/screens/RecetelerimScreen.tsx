@@ -13,6 +13,7 @@ import {
 import ReceteNoIcon from "@/assets/images/receteler-page/recete_no.svg";
 import ReceteTeminTarihiIcon from "@/assets/images/receteler-page/recete_temin_tarihi.svg";
 import RecetelerIcon from "@/assets/images/receteler-page/receteler.svg";
+import { useRouter } from "expo-router";
 const SgkLogo = require("@/assets/images/sgk.png");
 
 interface RecetelerimScreenProps {
@@ -22,6 +23,10 @@ interface RecetelerimScreenProps {
 export const RecetelerimScreen: React.FC<RecetelerimScreenProps> = ({
   onBack,
 }) => {
+  const router = useRouter();
+  const handleNavigateKontrolPage = () => {
+    router.push("/(tabs)/biten-raporlu-ilaclar" as any);
+  };
   return (
     <ScrollView
       contentContainerStyle={styles.container}
@@ -153,12 +158,7 @@ export const RecetelerimScreen: React.FC<RecetelerimScreenProps> = ({
               <Text style={styles.equivalentText}>
                 Eşdeğer ilaçlar ve fiyat farklarını görüntüleyin
               </Text>
-              <Ionicons
-                name="chevron-forward"
-                size={16}
-                color="#A03030"
-                style={{ marginTop: 6 }}
-              />
+              <Ionicons name="chevron-forward" size={16} color="#A03030" />
             </View>
           </TouchableOpacity>
         </View>
@@ -173,7 +173,11 @@ export const RecetelerimScreen: React.FC<RecetelerimScreenProps> = ({
             />
             <Text style={styles.alertText}>2 günlük ilacınız kaldı</Text>
           </View>
-          <TouchableOpacity style={styles.requestButton} activeOpacity={0.8}>
+          <TouchableOpacity
+            style={styles.requestButton}
+            activeOpacity={0.8}
+            onPress={handleNavigateKontrolPage}
+          >
             <MaterialCommunityIcons
               name="file-document-edit-outline"
               size={14}
@@ -458,6 +462,7 @@ const styles = StyleSheet.create({
     color: "#565658",
   },
   equivalentBox: {
+    flexDirection: "row",
     width: 130,
     backgroundColor: "#FDF6F6",
     borderWidth: 1,
@@ -466,10 +471,11 @@ const styles = StyleSheet.create({
     padding: 8,
     alignItems: "center",
     justifyContent: "center",
-    alignSelf: "stretch",
   },
   equivalentTextBox: {
     flexDirection: "row",
+    alignItems: "center",
+    flex: 0.8,
   },
   equivalentText: {
     fontSize: 8,

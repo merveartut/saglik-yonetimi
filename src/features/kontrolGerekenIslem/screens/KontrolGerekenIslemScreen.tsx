@@ -1,12 +1,12 @@
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import {
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 // SVG'leri bileşen olarak import ediyoruz
@@ -131,9 +131,6 @@ export const KontrolEtmenizGerekenIslemScreen: React.FC<
             <View style={styles.actionButtonInnerContent}>
               <View style={styles.actionIconBoxRed}>
                 <HataliIslemIcon width={52} height={52} />
-                <View style={styles.badgeIconRed}>
-                  <Ionicons name="close" size={10} color="#FFF" />
-                </View>
               </View>
               <Text style={styles.notMyActionText}>İşlem Bana Ait Değil</Text>
             </View>
@@ -147,9 +144,6 @@ export const KontrolEtmenizGerekenIslemScreen: React.FC<
             <View style={styles.actionButtonInnerContent}>
               <View style={styles.actionIconBoxBlue}>
                 <DogruIslemIcon width={52} height={52} />
-                <View style={styles.badgeIconGreen}>
-                  <Ionicons name="checkmark" size={10} color="#FFF" />
-                </View>
               </View>
               <Text style={styles.myActionText}>İşlem Bana Ait</Text>
             </View>
@@ -171,7 +165,7 @@ const styles = StyleSheet.create({
   },
   patternBackgroundContainer: {
     position: "absolute",
-    top: -120,
+    top: -90,
     left: -16,
     right: -16,
     height: 200,
@@ -290,7 +284,7 @@ const styles = StyleSheet.create({
   },
   detailInfoBox: {
     flexDirection: "row",
-    alignItems: "flex-start",
+    alignItems: "center", // Düzeltildi: iOS'te dikey esnemeyi önler
     backgroundColor: "#FAF5F5",
     borderRadius: 12,
     borderWidth: 1,
@@ -300,9 +294,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   detailIconLeftCol: {
-    paddingTop: 2,
     flexShrink: 0,
-    height: "100%",
     alignItems: "center",
     justifyContent: "center",
   },

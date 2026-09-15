@@ -80,7 +80,7 @@ export const ProfilScreen: React.FC<ProfilimScreenProps> = ({ onBack }) => {
             <ProfilimIcon width={20} height={20} />
           </View>
           <View style={styles.cardMiddleContainer}>
-            <Text style={styles.cardTitle}>Fatma YILMAZ</Text>
+            <Text style={styles.cardTitle}>Merve ARTUT</Text>
             <Text style={styles.cardSubText}>TC: •••••••123</Text>
           </View>
           <Ionicons name="chevron-forward" size={18} color="#888" />
@@ -430,6 +430,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: 10,
+    paddingInline: 6,
     borderBottomWidth: 1,
     borderBottomColor: "#EDF2F7",
     backgroundColor: "#EFF2F8",

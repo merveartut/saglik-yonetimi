@@ -1,5 +1,8 @@
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { useFonts } from "expo-font";
 import { router } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from "react";
 import {
   Image,
   ScrollView,
@@ -9,10 +12,35 @@ import {
   View,
 } from "react-native";
 
+import Edevlet from "@/assets/images/login-page/e-devlet.svg";
+import Erisim from "@/assets/images/login-page/erisim.svg";
+import GuvenliErisim from "@/assets/images/login-page/guvenli-erisim.svg";
+import HizliGiris from "@/assets/images/login-page/hizli-giris-icin.svg";
+import KisiselVeriler from "@/assets/images/login-page/kisisel-verileriniz-korunur.svg";
+
+// Açılış ekranının fontlar yüklenene kadar açık kalmasını sağlayabiliriz
+SplashScreen.preventAutoHideAsync();
+
 export function LoginScreen() {
+  // Fontu projeye yüklüyoruz (assets/fonts/ altına attığınızı varsayıyoruz)
+  const [loaded] = useFonts({
+    CustomScriptFont: require("@/assets/fonts/MrDafoe-Regular.ttf"),
+  });
+
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
+
+  if (!loaded) {
+    return null;
+  }
+
   const handleLoginPress = () => {
-    router.replace("/(tabs)/" as never);
+    router.replace("/(tabs)");
   };
+
   return (
     <View style={styles.mainWrapper}>
       <ScrollView
@@ -21,7 +49,6 @@ export function LoginScreen() {
       >
         {/* Üst Kavisli Desen Alanı */}
         <View style={styles.circlePatternContainer}>
-          {/* Sol Üst ve Sağ Üst Köşelere Sabitlenmiş Büyük Logolar */}
           <Image
             source={require("@/assets/images/csgb-logo.png")}
             style={styles.topLeftLogo}
@@ -33,16 +60,15 @@ export function LoginScreen() {
             resizeMode="contain"
           />
 
-          {/* Ana e-Sağlık Logosu */}
           <Image
             source={require("@/assets/images/sgk-e-saglik-logo.png")}
             style={styles.logoImage}
             resizeMode="contain"
           />
 
-          {/* Slogan */}
+          {/* Özel El Yazısı Fontlu Slogan */}
           <Text style={styles.slogan}>
-            Sağlığınız Güvende, Bilginiz Elinizde
+            Saglıgınız Güvende, Bilginiz Cebinizde
           </Text>
         </View>
 
@@ -65,11 +91,7 @@ export function LoginScreen() {
           >
             <View style={styles.buttonLeftContent}>
               <View style={styles.eLogoCircle}>
-                <Image
-                  source={require("@/assets/images/edevlet-icon.png")}
-                  style={styles.eLogoImage}
-                  resizeMode="contain"
-                />
+                <Edevlet width={24} height={24} />
               </View>
               <Text style={styles.primaryButtonText}>
                 e-Devlet Girişi İçin Tıklayınız
@@ -95,17 +117,7 @@ export function LoginScreen() {
             activeOpacity={0.85}
           >
             <View style={styles.buttonLeftContent}>
-              <Ionicons
-                name="lock-closed-outline"
-                size={20}
-                color="#004FC6"
-                style={{
-                  marginRight: 10,
-                  backgroundColor: "#DCEAFC",
-                  borderRadius: 100,
-                  padding: 6,
-                }}
-              />
+              <HizliGiris width={24} height={24} />
               <Text style={styles.outlineButtonText}>
                 Hızlı Giriş İçin Tıklayınız
               </Text>
@@ -123,7 +135,7 @@ export function LoginScreen() {
               <MaterialCommunityIcons
                 name="qrcode-scan"
                 size={42}
-                color="#004FC6"
+                color="#2D58A6"
               />
             </View>
             <View style={styles.qrTextContainer}>
@@ -145,19 +157,19 @@ export function LoginScreen() {
         {/* Alt Üçlü Özellik Alanı */}
         <View style={styles.footerFeatures}>
           <View style={styles.featureItem}>
-            <Ionicons name="shield-outline" size={22} color="#004FC6" />
+            <GuvenliErisim width={24} height={24} />
             <Text style={styles.featureText}>Güvenli{"\n"}Erişim</Text>
           </View>
           <View style={styles.featureDivider} />
           <View style={styles.featureItem}>
-            <Ionicons name="lock-closed-outline" size={22} color="#004FC6" />
+            <KisiselVeriler width={24} height={24} />
             <Text style={styles.featureText}>
               Kişisel Verileriniz{"\n"}Korunur
             </Text>
           </View>
           <View style={styles.featureDivider} />
           <View style={styles.featureItem}>
-            <Ionicons name="time-outline" size={22} color="#004FC6" />
+            <Erisim width={24} height={24} />
             <Text style={styles.featureText}>7/24 Hizmet{"\n"}Erişimi</Text>
           </View>
         </View>
@@ -165,7 +177,6 @@ export function LoginScreen() {
 
       {/* En Alt Sabit ve Tam Genişlikte Mavi Bant */}
       <View style={styles.bottomBar}>
-        <Text style={styles.bottomBarText}>SGK | Güvenilir. Hızlı. Kolay.</Text>
         <Text style={styles.bottomBarSubText}>Daima Yanınızda</Text>
       </View>
     </View>
@@ -175,7 +186,7 @@ export function LoginScreen() {
 const styles = StyleSheet.create({
   mainWrapper: {
     flex: 1,
-    backgroundColor: "#E9F1FD",
+    backgroundColor: "#E5EEF3",
   },
   container: {
     flexGrow: 1,
@@ -221,12 +232,11 @@ const styles = StyleSheet.create({
     transform: [{ scaleX: 0.77 }],
   },
   slogan: {
-    fontSize: 11.5,
+    fontSize: 16,
     color: "#4A5568",
-    fontStyle: "italic",
-    fontWeight: "500",
+    fontFamily: "CustomScriptFont", // Yüklediğimiz el yazısı fontu
     textAlign: "center",
-    marginTop: -12,
+    marginTop: -18,
     zIndex: 5,
     transform: [{ scaleX: 0.77 }],
   },
@@ -256,7 +266,7 @@ const styles = StyleSheet.create({
     borderColor: "#D6E4FC",
   },
   primaryButton: {
-    backgroundColor: "#004FC6",
+    backgroundColor: "#2D58A6",
     borderRadius: 10,
     height: 50,
     flexDirection: "row",
@@ -267,19 +277,16 @@ const styles = StyleSheet.create({
   buttonLeftContent: {
     flexDirection: "row",
     alignItems: "center",
+    gap: 38,
   },
   eLogoCircle: {
-    width: 26,
-    height: 26,
-    borderRadius: 13,
+    width: 32,
+    height: 32,
+    borderRadius: 15,
     backgroundColor: "#FFFFFF",
     justifyContent: "center",
     alignItems: "center",
     marginRight: 12,
-  },
-  eLogoImage: {
-    width: 16,
-    height: 16,
   },
   primaryButtonText: {
     color: "#FFFFFF",
@@ -311,7 +318,7 @@ const styles = StyleSheet.create({
   outlineButton: {
     backgroundColor: "#FFFFFF",
     borderWidth: 1.5,
-    borderColor: "#004FC6",
+    borderColor: "#2D58A6",
     borderRadius: 10,
     height: 50,
     flexDirection: "row",
@@ -326,7 +333,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   qrBox: {
-    backgroundColor: "#E9F1FD",
+    backgroundColor: "#EDF2F6",
     borderRadius: 10,
     padding: 12,
     flexDirection: "row",
@@ -350,7 +357,7 @@ const styles = StyleSheet.create({
   qrTitle: {
     fontSize: 12.5,
     fontWeight: "bold",
-    color: "#285DD9",
+    color: "#2D58A6",
     marginBottom: 2,
   },
   qrDesc: {
@@ -360,7 +367,7 @@ const styles = StyleSheet.create({
   },
   footerFeatures: {
     flexDirection: "row",
-    backgroundColor: "#DCEBFE",
+    backgroundColor: "#E0EAF4",
     borderRadius: 14,
     padding: 12,
     justifyContent: "space-around",
@@ -389,6 +396,7 @@ const styles = StyleSheet.create({
   bottomBar: {
     backgroundColor: "#004FC6",
     width: "100%",
+    height: 40,
     paddingVertical: 10,
     alignItems: "center",
     justifyContent: "center",
@@ -398,16 +406,10 @@ const styles = StyleSheet.create({
     right: 0,
     zIndex: 100,
   },
-  bottomBarText: {
-    color: "#FFFFFF",
-    fontSize: 12,
-    fontWeight: "700",
-    letterSpacing: 0.8,
-  },
   bottomBarSubText: {
     color: "#E9F1FD",
-    fontSize: 10,
-    fontStyle: "italic",
-    marginTop: 1,
+    fontSize: 18,
+    fontFamily: "CustomScriptFont", // Alt footer alanındaki el yazısı fontu
+    letterSpacing: 2,
   },
 });

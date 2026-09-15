@@ -6,7 +6,6 @@ export default function RootLayout() {
   return (
     <Stack initialRouteName="login" screenOptions={{ headerShown: false }}>
       <Stack.Screen name="login" options={{ title: "E-Devlet Giriş" }} />
-      <Stack.Screen name="biten-raporlu-ilaclar" />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
   );

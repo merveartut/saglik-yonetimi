@@ -1,12 +1,12 @@
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import {
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 // SVG'leri bileşen olarak import ediyoruz
@@ -14,6 +14,7 @@ import HastaneIllustration from "@/assets/images/basvurular-page/Hastane.svg";
 import TakvimIcon from "@/assets/images/basvurular-page/takvim.svg";
 import CircularPattern from "@/assets/images/circular-pattern.svg";
 import SgkLogo from "@/assets/images/sgk.png";
+import { useRouter } from "expo-router";
 
 interface SaglikKurulusuBasvurularimScreenProps {
   onBack?: () => void;
@@ -23,6 +24,10 @@ interface SaglikKurulusuBasvurularimScreenProps {
 export const SaglikKurulusuBasvurularimScreen: React.FC<
   SaglikKurulusuBasvurularimScreenProps
 > = ({ onBack, onSelectApplication }) => {
+  const router = useRouter();
+  const handleNavigateKontrolPage = () => {
+    router.push("/(tabs)/kontrol-gereken-islem" as any);
+  };
   const applications = [
     {
       id: 1,
@@ -136,7 +141,9 @@ export const SaglikKurulusuBasvurularimScreen: React.FC<
               </View>
 
               {item.hasWarning && (
-                <Text style={styles.warningText}>{item.warningText}</Text>
+                <TouchableOpacity onPress={handleNavigateKontrolPage}>
+                  <Text style={styles.warningText}>{item.warningText}</Text>
+                </TouchableOpacity>
               )}
             </View>
           </TouchableOpacity>

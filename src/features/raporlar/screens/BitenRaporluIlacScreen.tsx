@@ -1,12 +1,12 @@
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 // SVG/PNG varlıklarını bileşen olarak import ediyoruz
@@ -14,6 +14,7 @@ import IlaclarimAltIcon from "@/assets/images/raporlar-page/ilaclarim.svg";
 import RaporIcon from "@/assets/images/raporlar-page/rapor.svg";
 import SeciliIlaclarTalepIcon from "@/assets/images/raporlar-page/secili-ilaclar-rapor-talebi.svg";
 import SgkLogo from "@/assets/images/sgk.png";
+import { useRouter } from "expo-router";
 
 interface BitenRaporluIlacScreenProps {
   onBack?: () => void;
@@ -40,6 +41,10 @@ export const BitenRaporluIlacScreen: React.FC<BitenRaporluIlacScreenProps> = ({
     setSelectedDrugs([nextState, nextState]);
   };
 
+  const router = useRouter();
+  const handleNavigateKontrolPage = () => {
+    router.push("/(tabs)/raporlu-ilac-temin" as any);
+  };
   return (
     <ScrollView
       contentContainerStyle={styles.container}
@@ -300,7 +305,11 @@ export const BitenRaporluIlacScreen: React.FC<BitenRaporluIlacScreenProps> = ({
       </View>
 
       {/* 6. Talep Oluştur Butonu */}
-      <TouchableOpacity style={styles.actionButton} activeOpacity={0.8}>
+      <TouchableOpacity
+        style={styles.actionButton}
+        activeOpacity={0.8}
+        onPress={handleNavigateKontrolPage}
+      >
         <View style={styles.actionButtonLeft}>
           <SeciliIlaclarTalepIcon width={24} height={24} />
           <Text style={styles.actionButtonText}>
@@ -387,7 +396,7 @@ const styles = StyleSheet.create({
     width: 52,
     height: 52,
     borderRadius: 40,
-    backgroundColor: "#E4EFFF",
+    backgroundColor: "#D4EAF8",
     justifyContent: "center",
     alignItems: "center",
     marginRight: 10,
@@ -445,7 +454,7 @@ const styles = StyleSheet.create({
     lineHeight: 14,
   },
   reportContentBody: {
-    paddingHorizontal: 12,
+    paddingHorizontal: 4,
     paddingBottom: 8,
   },
   tableHeaderRow: {
@@ -475,13 +484,13 @@ const styles = StyleSheet.create({
     height: 18,
     borderRadius: 4,
     borderWidth: 1.5,
-    borderColor: "#004FC6",
+    borderColor: "#2F6FB8",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#FFF",
   },
   checkboxChecked: {
-    backgroundColor: "#004FC6",
+    backgroundColor: "#2F6FB8",
   },
   tableHeaderText: {
     fontSize: 9.5,
@@ -575,7 +584,7 @@ const styles = StyleSheet.create({
     lineHeight: 14,
   },
   actionButton: {
-    backgroundColor: "#2E66B4",
+    backgroundColor: "#3974BA",
     borderRadius: 12,
     flexDirection: "row",
     alignItems: "center",

@@ -243,8 +243,8 @@ const styles = StyleSheet.create({
     lineHeight: 17,
   },
   heroImageContainer: {
-    width: 130,
-    height: 110,
+    width: 180,
+    height: 140,
     justifyContent: "center",
     alignItems: "center",
   },

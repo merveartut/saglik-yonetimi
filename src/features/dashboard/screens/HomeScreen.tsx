@@ -114,7 +114,11 @@ export const HomeScreen: React.FC<HomeScreenProps> = () => {
 
         {/* 1. Üst Header Alanı (Geri Tuşu ve Logo) */}
         <View style={styles.topHeader}>
-          <TouchableOpacity style={styles.backButton} activeOpacity={0.7}>
+          <TouchableOpacity
+            style={styles.backButton}
+            activeOpacity={0.7}
+            onPress={() => router.push("/login" as any)}
+          >
             <Ionicons name="menu" size={20} color="#003366" />
           </TouchableOpacity>
 
@@ -137,7 +141,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = () => {
         {/* Kullanıcı Karşılama Kartı */}
         <View style={styles.welcomeCard}>
           <View style={styles.welcomeTextContainer}>
-            <Text style={styles.welcomeName}>Sn. Fatma YILMAZ</Text>
+            <Text style={styles.welcomeName}>Sn. Merve ARTUT</Text>
             <View style={styles.welcomeSubRow}>
               <Text style={styles.welcomeText}>Hoş geldiniz</Text>
               <Ionicons
@@ -303,11 +307,11 @@ const styles = StyleSheet.create({
     marginTop: -20,
   },
   menuCard: {
-    width: "48%",
+    width: "49%",
     height: "auto",
     backgroundColor: "#FFFFFF",
     borderRadius: 14,
-    padding: 12,
+    padding: 8,
     marginBottom: 12,
     borderWidth: 1,
     borderColor: "#ebeff5",
@@ -336,7 +340,7 @@ const styles = StyleSheet.create({
     marginRight: 4,
   },
   cardTitle: {
-    fontSize: 11,
+    fontSize: 10,
     fontWeight: "bold",
     color: "#003366",
     marginBottom: 2,

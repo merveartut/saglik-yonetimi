@@ -31,11 +31,11 @@ export default function TabLayout() {
           shadowOffset: { width: 0, height: -2 },
         },
         tabBarItemStyle: {
-          flex: 1, // Tüm butonların ekrana eşit ve dengeli dağılmasını sağlar
+          flex: 1,
           paddingHorizontal: 0,
         },
         tabBarLabelStyle: {
-          fontSize: 8, // 6 sekmenin rahatça sığması için optimize edilmiş boyut
+          fontSize: 8,
           fontWeight: "600",
           textAlign: "center",
         },
@@ -91,66 +91,19 @@ export default function TabLayout() {
           tabBarIcon: ({ size }) => <ProfilimIcon width={size} height={size} />,
         }}
       />
-      <Tabs.Screen
-        name="biten-raporlu-ilaclar"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="raporlu-ilac-temin"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="ilac-geri-bildirim"
-        options={{
-          href: null,
-        }}
-      />
+      <Tabs.Screen name="biten-raporlu-ilaclar" options={{ href: null }} />
+      <Tabs.Screen name="raporlu-ilac-temin" options={{ href: null }} />
+      <Tabs.Screen name="ilac-geri-bildirim" options={{ href: null }} />
       <Tabs.Screen
         name="saglik-kurulusu-basvurulari"
-        options={{
-          href: null,
-        }}
+        options={{ href: null }}
       />
-      <Tabs.Screen
-        name="kontrol-gereken-islem"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="tibbi-cihazlar"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="bilgilendirme-iceriklerim"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="hesaplama-araclari"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="sgkya-sor"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="guvenli-kimlik-dogrulama"
-        options={{
-          href: null,
-        }}
-      />
+      <Tabs.Screen name="kontrol-gereken-islem" options={{ href: null }} />
+      <Tabs.Screen name="tibbi-cihazlar" options={{ href: null }} />
+      <Tabs.Screen name="bilgilendirme-iceriklerim" options={{ href: null }} />
+      <Tabs.Screen name="hesaplama-araclari" options={{ href: null }} />
+      <Tabs.Screen name="sgkya-sor" options={{ href: null }} />
+      <Tabs.Screen name="guvenli-kimlik-dogrulama" options={{ href: null }} />
     </Tabs>
   );
 }

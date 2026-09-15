@@ -12,15 +12,16 @@ import {
 
 // SVG'leri bileşen olarak import ediyoruz
 import CircularPattern from "@/assets/images/circular-pattern.svg";
-import IkinciHeroImage from "@/assets/images/ikinci-hero-image.png";
 import IBilgilendirmeIcon from "@/assets/images/ilaclar-page/i_bilgilendirme.svg";
 import IlacGeriBildirimIcon from "@/assets/images/ilaclar-page/ilac_geri_bildirim.svg";
 import IlacGeriBildirimAltButonIcon from "@/assets/images/ilaclar-page/ilac_geri_bildirim_alt_buton.svg";
+import HeroImage from "@/assets/images/ilaclar-page/ilaclar-hero.svg";
 import IlaclarimIcon from "@/assets/images/ilaclar-page/ilaclarim.svg";
 import KirmiziUnlemIcon from "@/assets/images/ilaclar-page/kirmizi-unlem.svg";
 import ReceteAltButonIcon from "@/assets/images/ilaclar-page/recete_alt_buton.svg";
 import RecetelerimIcon from "@/assets/images/ilaclar-page/recetelerim.svg";
 import YurtDisiIlacIcon from "@/assets/images/ilaclar-page/yut_disi_ilacim.svg";
+
 import SgkLogo from "@/assets/images/sgk.png";
 
 interface IlaclarimScreenProps {
@@ -49,6 +50,7 @@ export const IlaclarimScreen: React.FC<IlaclarimScreenProps> = ({ onBack }) => {
       badgeColor: "#003366",
       badgeBg: "#E4EFFF",
       BadgeIconComponent: ReceteAltButonIcon,
+      onPress: () => router.push("/(tabs)/recetelerim" as any),
     },
     {
       title: "YURT DIŞI İLACIM",
@@ -115,11 +117,7 @@ export const IlaclarimScreen: React.FC<IlaclarimScreenProps> = ({ onBack }) => {
           </Text>
         </View>
         <View style={styles.heroImageContainer}>
-          <Image
-            source={IkinciHeroImage}
-            style={styles.heroIllustration}
-            resizeMode="contain"
-          />
+          <HeroImage style={styles.heroIllustration} />
         </View>
       </View>
 
@@ -198,7 +196,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    marginBottom: 15,
+    marginBottom: 40,
     paddingHorizontal: 4,
   },
   sgkLogo: {
@@ -258,12 +256,12 @@ const styles = StyleSheet.create({
     width: 240,
   },
   heroImageContainer: {
-    width: 200,
-    height: 160,
+    width: 190,
+    height: 150,
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    right: -32,
+    right: -28,
   },
   heroIllustration: {
     width: "100%",
@@ -276,7 +274,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   menuCard: {
-    width: "48%",
+    width: "49%",
     backgroundColor: "#FFFFFF",
     borderRadius: 14,
     padding: 12,
@@ -318,8 +316,9 @@ const styles = StyleSheet.create({
   cardBadge: {
     flexDirection: "row",
     flexWrap: "wrap",
+    alignItems: "center",
     justifyContent: "space-between",
-    gap: 6,
+    gap: 4,
     paddingHorizontal: 4,
     paddingVertical: 5,
     borderRadius: 6,
